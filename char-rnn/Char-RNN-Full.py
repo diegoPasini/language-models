@@ -5,7 +5,7 @@ import numpy as np
 import torch.optim as optim
 
 # First Read the dataset:
-file = open("/Users/diego/Scripts/og-language-models/tiny-cicero.txt", "r")
+file = open("/Users/diego/Scripts/og-language-models/tiny-shakespeare.txt", "r")
 contents = file.read()
 #print(contents)
 file.close()
@@ -72,7 +72,6 @@ class step(nn.Module):
         self.norm2 = nn.BatchNorm1d(256)
         self.dropout = nn.Dropout(p=0.2)
         self.w_hy = nn.Linear(256, VOCAB_SIZE, bias = False)
-        #self.norm3 = nn.BatchNorm1d(256)
         self.w_hh = nn.Linear(256, 256, bias = False)
     
     def forward(self, x, h_i = None, ):
@@ -152,17 +151,18 @@ for i in range(BATCH_SIZE):
 
 
 ### Truly terrible results
-
 output_file = open("output.txt", "w")
 
 with torch.no_grad():
     hidden = None
-    input_data = torch.randint(VOCAB_SIZE, (1, CONTEXT_SIZE)).float()
+    input_data = test_batch[0]
     for _ in range(1000):
-        output, hidden = model(input_data, hidden)
+        output, _ = model(input_data)
         predicted_index = torch.argmax(output, dim=-1)
-        predicted_char = int_to_string[predicted_index.item()]
+        #print(predicted_index)
+        predicted_char = decode(predicted_index.tolist()[0])[-1]
+        #print(predicted_char, end='')
         output_file.write(predicted_char)
-        input_data = torch.cat((input_data[:, 1:], predicted_index.float()), dim=1)
+        input_data[0] = torch.cat((input_data[0][1:], predicted_index[0][-1].unsqueeze(0)))
 
 output_file.close()
