@@ -1,0 +1,369 @@
+Final Testing Results for Char-based LSTM:
+
+LSTM Block sequence was restricted due to char based input for element values.
+
+Hyperparams:
+- Context Size (aka LSTM block length): 96
+- LSTM hidden layer sizes : 512
+- Batch Size : 32
+
+Total Model Params:
+- 107403360
+
+Compute:
+- 1 RTX 4090 - Runpod
+- Total Training Time: 1844.4981417655945
+
+Final Losses:
+- Loss:  2.8027687072753906
+- Test Loss:  2.9320092099905013
+
+Observation: Measuring loss through all 
+
+Further Improvements: 
+- Normalizing through Layernorm
+- Implementing residuals proplery between blocks
+
+Sample Outputs:
+While he himself keeps in the cold field?
+
+Second Watchman:
+'Tis the more honour, because 
+toe  
+h    te to    e te n  torto  ta e ao  e 
+
+BRTTIe In       
+
+na  to  toe  toe     to      t
+Input:   the humane way: the other course
+Will prove too bloody, and the end of it
+Unknown to the beginn
+to  toe    hh e
+th  to    to     Wo   th   eth  te e    an  tor toe to to to e    th the ta     
+Input:  ost heartily I pray
+Your highness to assign our trial day.
+
+KING RICHARD II:
+Wrath-kindled gentl
+   to       a sh   Io   to      eth to     aoe sh e  to e 
+PETTIIIO
+::: ao 
+
+h    
+ n     tor   
+Input:  JULIET:
+But to be frank, and give it thee again.
+And yet I wish but for the thing I have:
+My bou
+ ::OO:
+Wo  th tottee    to  to   to the  te    
+
+n  toeeaaso   to  to  toe to    a se   
+
+h toe 
+Input:  ion may subdue the cheek,
+But not take in the mind.
+
+CAMILLO:
+Yea, say you so?
+There shall not a
+  eto  th e   to  tar  es
+n ,ho  to   to toe to   
+
+PRTNIO::
+Wh   th  so  sh  
+h    to    toe ma
+Input:  g and beauteous,
+Brought up as best becomes a gentlewoman:
+Her only fault, and that is faults en
+ t   tor    ,   
+n      to toetar  to e    aomar         
+
+ndeto e te e e
+ao  the  tortor   eto 
+Input:  this is true.
+
+DUKE OF SURREY:
+As false, by heaven, as heaven itself is true.
+
+LORD FITZWATER:
+S
+ e  ao so    
+PATNNII:Io   
+ 
+
+n sor    aarto   e  to to     to     ta to e 
+
+PRTTIIIO:::
+:
+:
+Wh
+Input:  e to fight:
+And fight and die is death destroying death;
+Where fearing dying pays death servile 
+ te toe   
+
+n  tote  tee toe toeto  e tot        ao   e
+
+h    tor  e  to e  th   ier   bo e    t
+Input:  t unborn.
+Shall feel this day as sharp to them as thorn.
+
+DUKE OF AUMERLE:
+You holy clergymen, i
+ tee     
+oe  eto   the  ae eta the   teethe  to ta     
+PETNNSIOI : 
+
+ 
+
+
+h  ta   ta         ta
+Input:  ,
+This arm upholds the house of Lancaster.
+
+WARWICK:
+And I the house of York.
+
+KING LEWIS XI:
+Qu
+
+
+o   aa  the     toe wo    th t      e   
+PRRRIOOO
+I   t so  se    to to   
+
+ARTTINIOO::Io 
+Io 
+Input:   we may now withdraw us.
+
+RICHMOND:
+What men of name are slain on either side?
+
+DERBY:
+John Duke
+to tor to  mhee e   to  
+PETTEI:::
+Wh   to  to hh  etoe the  sto ta     to   
+
+PRTTNI
+Io   t    
+Input:  s in record,
+And let go by the actor.
+
+ISABELLA:
+O just but severe law!
+I had a brother, then. H
+ to toe     
+n  to ese toeto  her   
+
+BRTNNNO:
+
+Iodoee tn  to     to  s
+owa etasa       ah    t 
+Input:  , combatants.
+Stay, the king hath thrown his warder down.
+
+KING RICHARD II:
+Let them lay by thei
+
+to t     e 
+Ih    so  to   to e aoe    to  sh     to e 
+
+PRTNITIO::
+::I  
+
+o  toe  te  to toe e
+Input:  esy,
+And say 'What is't your honour will command,
+Wherein your lady and your humble wife
+May sho
+    
+n  to  taat  to   ae e to    eho   te       Ah      th   toe  toteth  ete     to   To  th  
+Input:  ateful.
+
+CLAUDIO:
+Ay, but to die, and go we know not where;
+To lie in cold obstruction and to ro
+   e  
+TPEONIOO:
+A   so  ao tor 
+tnr se mh toe  te  to    
+
+oeto  to ho   to      e   te  to th 
+Input:  in Angelo;
+In this I'll be impartial; be you judge
+Of your own cause. Is this the witness, friar
+  t t    
+A dtha  ta   to to        
+ao theeto  e To th   to  to e  
+a  to   aha to       aoee  
+Input:   Romeo?
+Or, if his mind be writ, give me his letter.
+
+FRIAR JOHN:
+Going to find a bare-foot brot
+to e  
+
+o  to so esoee to to   stoe  ao toeeto   n 
+
+PRTNNIIO::::Ioae  th toe  tnsar       to  e
+Input:  her, but
+The art itself is nature.
+
+PERDITA:
+So it is.
+
+POLIXENES:
+Then make your garden rich in
+ee  toe tod aa eso e  nto toe    
+
+PRTENII
+
+Wodso to 
+
+PETRIC:::O:Ah e to   to   aor    th ento 
+Input:  wd to his presence, where their untaught love
+Must needs appear offence.
+How now, fair maid?
+
+IS
+  th to eto   e    Ih    ao    toe    e to e Tne  ao    ae     to     e
+
+n  se   ao   toe  
+
+PRT
+Input:   I beseech you, think you he'll carry Rome?
+
+AUFIDIUS:
+All places yield to him ere he sits down;
+tota     ethe  th    theeto    tor   te   
+
+PATNIIO:::I  ete     th    to me  ta  te th   to   
+
+Input:  truction,
+And hold you ever to our special drift;
+Though sometimes you do blench from this to th
+  ee e   
+n  te e th  te   to toe whe     ta    
+
+h   e th     e  th  to t      to   th   th th 
+Input:  orehouse gratis, as 'twas used
+Sometime in Greece,--
+
+MENENIUS:
+Well, well, no more of that.
+
+CO
+        to      to taoe  to   Th      etoeta        
+PATNNO:::
+Ih    Ih    to toee to th   
+APRT
+Input:  r,
+A sin-absolver, and my friend profess'd,
+To mangle me with that word 'banished'?
+
+FRIAR LAURE
+  Tnwo            to  se te e   to    e 
+  
+h ho e   to to   theeeto   ts         
+
+BRTNNOII
+::
+
+Input:  and fearful;
+In every one of these no man is free,
+But that his negligence, his folly, fear,
+Amo
+e  to      
+
+o toe   to  to to    te te eto to    
+n  thet so  to          to  to     ao    
+na 
+Input:  now, why, hanging.
+
+CAMILLO:
+How now, good fellow! why shakest thou so? Fear
+not, man; here's no
+    the  ao      
+
+PRTTIO::
+Wo  to   te  eto     sah  th    e to   to 
+tn   Th e ah  
+to    eso 
+Input:  e court: they cherish it to make it stay
+there; and yet it will no more but abide.
+
+AUTOLYCUS:
+V
+ ao    
+ah   to e    ao th mor  to to e th    
+
+n tthe to toe  to to   te  tore  
+
+PATTIO:
+::
+Wh
+Input:  IOLANUS:
+It is a purposed thing, and grows by plot,
+To curb the will of the nobility:
+Suffer't, 
+ :O
+:::
+W  toetesoe      th     te  te    ta mhe   
+h to   so  to   te to  tie e    
+
+e        t
+Input:  had
+continued in it some time. You say, seven years together?
+
+ELBOW:
+And a half, sir.
+
+ESCALUS:
+   Ah       ,to toeto   thee 
+an  mo e th    th    the      
+
+PETNIO
+I d teso    to   
+BRTNNOI:
+
+Input:  ds,
+And much effuse of blood doth make me faint.
+Come, York and Richard, Warwick and the rest;
+I
+   
+nd to   te e   ao te    to   ao   to toa   
+And  
+tn t ao  tn      
+s       tn  to  ao  e
+
+n
+Input:  d his country, and his name remains
+To the ensuing age abhorr'd.' Speak to me, son:
+Thou hast af
+ to eto   e  
+to  tor te   to      To mh  to      to  ta       
+ ta    to toe sh  
+
+he  tnr  te 
+Input:  ongue far from heart--play with all virgins so:
+I hold you as a thing ensky'd and sainted.
+By yo
+  ee ao  ta e to    
+
+    th   toe mo      ah  
+owee  th  to tawoe   to   e  te  to  e   
+
+ndmhe
+Input:  eserts, but what I will deserve:
+Urge the necessity and state of times,
+And be not peevish-fond 
+       to  so   s soe  te      
+
+o   aoe to        to  to    to th     
+nd te to  tor  e       a
+
+
+
+

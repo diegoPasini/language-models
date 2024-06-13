@@ -4,17 +4,19 @@ import torch.nn.functional as F
 import numpy as np
 import torch.optim as optim
 from tqdm import tqdm
+import time
+
+BATCH_SIZE = 32
+CONTEXT_SIZE = 96
 
 # First Read the dataset:
-file = open("/home/diego/Scripts/language-models/tiny-shakespeare.txt", "r")
+file = open("/language-models/tiny-shakespeare.txt", "r")
 contents = file.read()
-#print(contents)
 file.close()
 
 vocabulary = list(set(contents))
 vocabulary = sorted(vocabulary)
 VOCAB_SIZE = len(vocabulary)
-print(vocabulary)
 
 print("Vocabulary Length: ", len(vocabulary))
 print("Content Length: ", len(contents))
@@ -27,12 +29,8 @@ string_to_int = {ch : i for i, ch in enumerate(vocabulary)}
 int_to_string = {i : ch for i, ch in enumerate(vocabulary)}
 encode = lambda s : [string_to_int[c] for c in s]
 decode = lambda l : ''.join([int_to_string[i] for i in l])
-print(encode("Hello World"))
-print(decode(encode("Hello World")))
 
 data = torch.tensor(encode(contents), dtype=int, device = 'cuda')
-print(data.shape,data.dtype)
-print(data[:1000])
 
 n = int(0.9*len(data))
 train_data = data[n:]
@@ -42,8 +40,6 @@ val_data = val_data.float()
 
 ## Now, we define our context window
 torch.manual_seed(1337)
-BATCH_SIZE = 4
-CONTEXT_SIZE = 8
 
 def get_batch(split):
     data = train_data if split == 'train' else val_data
@@ -52,15 +48,7 @@ def get_batch(split):
     y = torch.stack([data[i+1:i+CONTEXT_SIZE+1] for i in ix])
     return x, y
 
-xb, yb = get_batch('train')
-print('inputs:')
-print(xb)
-print('targets:')
-print(yb)
-
-
 ## LSTM Model
-
 ## Short Term Memory Block
 class stmBlock(nn.Module):
     def __init__(self, input_dim, hidden_dim):
@@ -86,9 +74,11 @@ class stmBlock(nn.Module):
         self.tanh = nn.Tanh()
         
         self.dropout = nn.Dropout(p=0.1)
+        self.layer_norm = nn.LayerNorm((BATCH_SIZE, input_dim, hidden_dim))
 
     def forward(self, x, c_prev = None, h_prev = None):
-        # If not first block:
+        # If not first block:'
+        residual_x = x
         if h_prev is not None:
             f = self.sigmoid(self.dropout(self.Wif(x)) + self.dropout(self.Whf(h_prev)))
             i = self.sigmoid(self.dropout(self.Wii(x)) + self.dropout(self.Whi(h_prev)))
@@ -107,14 +97,12 @@ class stmBlock(nn.Module):
         h = o * self.tanh(c_t)
         return c_t, h
 
-## Now for the entire LSTM Module
 class LSTM(nn.Module):
     def __init__(self, input_dim, hidden_dim, output_dim):
         super().__init__()
         self.hidden_dim = hidden_dim
         self.input_dim = input_dim
         self.stmBlocks = nn.ModuleList([stmBlock(input_dim, hidden_dim) for i in range(CONTEXT_SIZE)])
-        # We make an additional list of linear layers for the ouput of each block
         self.linLays = nn.ModuleList([nn.Linear(hidden_dim, output_dim) for i in range(CONTEXT_SIZE)])
         self.loss = nn.CrossEntropyLoss()
         self.dropout = nn.Dropout(p=0.1)
@@ -123,7 +111,7 @@ class LSTM(nn.Module):
         logits = []
         h = None
         c = None
-        for i in range(CONTEXT_SIZE):
+        for i in range(CONTEXT_SIZE): 
             element = x[:, i].unsqueeze(1)
             c, h = self.stmBlocks[i](element, c, h) if h is not None else self.stmBlocks[i](element)
             o = self.dropout(self.linLays[i](h))
@@ -150,15 +138,28 @@ def evaluate(model):
 model = LSTM(1, 512, VOCAB_SIZE)
 model.cuda()
 optimizer = optim.Adam(model.parameters(), lr = 0.0001)
+total_params = sum(p.numel() for p in model.parameters())
+print(f"------Number of parameters: {total_params}--------")
 
+
+# Code here
+
+# Calculate the end time and time taken
+start = time.time()
 training_iterations = 10000
-for i in tqdm(range(training_iterations)):
-    optimizer.zero_grad()
-    batch = get_batch("train")
-    outputs, loss = model(batch[0], batch[1])
-    loss.backward()
-    #print("Loss: ", loss.item())
-    optimizer.step()
+for j in range(training_iterations // 100):
+    for i in tqdm(range(100)):
+        optimizer.zero_grad()
+        batch = get_batch("train")
+        outputs, loss = model(batch[0], batch[1])
+        loss.backward()
+        #print("Loss: ", loss.item())
+        optimizer.step()
+    print(f"Training Iteration: {i}, Loss: {loss}")
+
+end = time.time()
+length = end - start
+print("Traing Time: ", length)
 print("Loss: ", loss.item())
 
 print("Test Loss: ", evaluate(model))
